@@ -29,6 +29,10 @@ app.use(helmet())
 app.use(cors())
 app.use(xss())
 
+app.get('/',(req,res)=>{
+  res.send('job api')
+})
+
 // extra packages
 
 // routes
@@ -40,9 +44,7 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
-app.get('/',(req,res)=>{
-  res.send('job api')
-})
+
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL)
